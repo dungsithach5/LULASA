@@ -1,6 +1,6 @@
 import Layout from "../layout/Layout";
-// import CardProducts from '../components/Card/CardProducts';
-
+import CardProducts from '../components/Card/CardProducts';
+import Breadcrumbs from '../components/BreadCrumb';
 const Shop = () => {
     return (
         <Layout>
@@ -12,6 +12,7 @@ const Shop = () => {
             </div>
 
             <section className="bg-[#F9F7F6] py-20">
+                <Breadcrumbs/>
                 <div className="mx-52 grid grid-cols-4 gap-8">
                     <CardProducts
                         title="Lavender Bliss"

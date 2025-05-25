@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
-export default function CustomSeparator({products}) {
+export default function CustomSeparator({namepage}) {
   const breadcrumbs = [
-    <Link underline="hover" key="1" color="inherit" to="/">
+    <Link underline="hover" key="1" to="/">
       Home
     </Link>,
     <Link
@@ -19,7 +19,7 @@ export default function CustomSeparator({products}) {
       Shop
     </Link>,
     <Typography key="3" sx={{ color: 'text.primary' }}>
-      {products}
+      {namepage}
     </Typography>,
   ];
 
