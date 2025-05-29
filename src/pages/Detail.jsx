@@ -1,6 +1,7 @@
 import Layout from '../layout/Layout';
 import BreadCrumb from '../components/BreadCrumb';
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom'
 import { Heart } from 'lucide-react';
 import Tabs from '../components/Tabs';
 import CardProducts from '../components/Card/CardProducts';
@@ -8,8 +9,8 @@ import CardProducts from '../components/Card/CardProducts';
 function Detail() {
   return (
     <Layout>
-        <section className="mx-52 py-12">
-            <BreadCrumb namepage="products" />
+        <section className="mx-52 mt-16 py-12">
+          <BreadCrumb namepage="products" />
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Product Images */}
@@ -17,7 +18,7 @@ function Detail() {
                   <img
                     src='/src/assets/img/product.png'
                     alt='product'
-                    className="w-full object-cover"
+                    className="w-full scale-75 object-cover"
                   />
                 </div>
 
@@ -26,7 +27,16 @@ function Detail() {
                 <div>
                   <h1 className="text-3xl font-bold">Product</h1>
                   <div className="flex items-center mt-2">
-                    <div className="flex">3</div>
+                      <div className='flex space-x-1'>
+                        {[...Array(5)].map((_, index) => (
+                          <img
+                            key={index}
+                            src="src/assets/icon/star.png"
+                            className='h-4 w-4'
+                            alt="star"
+                          />
+                        ))}
+                      </div>
                     <span className="ml-2 text-sm text-soap-600">
                       ( 3 review )
                     </span>
@@ -40,22 +50,6 @@ function Detail() {
                 </div>
 
                 <p className="text-soap-600">Experience the tranquility of lavender fields with our handcrafted soap. Made with pure lavender essential oil and dried lavender buds, this soap provides a gentle cleansing experience while calming your senses. The natural antibacterial properties of lavender help purify your skin, leaving it feeling refreshed and balanced.</p>
-
-                {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {productDetails.features.map((feature, index) => (
-                    <div key={index} className="flex flex-col items-center p-4 bg-soap-50 rounded-lg">
-                      {feature.icon === "bath" ? (
-                        <Bath className="h-6 w-6 text-herb-600 mb-2" />
-                      ) : (
-                        <Droplets className="h-6 w-6 text-herb-600 mb-2" />
-                      )}
-                      <h3 className="font-medium text-sm">{feature.title}</h3>
-                      <p className="text-xs text-soap-600 text-center mt-1">
-                        {feature.description}
-                      </p>
-                    </div>
-                  ))}
-                </div> */}
 
                 <div className="pt-4 border-t border-soap-100">
                   <div className="flex items-center">
@@ -85,7 +79,12 @@ function Detail() {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                     {/* Add to Cart - ${(productDetails.price * quantity).toFixed(2)} */}
-                    <Button variant="contained" sx={{backgroundColor:'#2D6E53'}}>Add to Cart - $123</Button>
+                    <Button 
+                      variant="contained" 
+                      sx={{backgroundColor:'#2D6E53'}}
+                      >
+                      Add to Cart - $123
+                    </Button>
                     <Button
                         variant="outlined"
                         sx={{borderColor:'#2D6E53', color:'#2D6E53'}}
@@ -133,6 +132,25 @@ function Detail() {
                         <path d="M21 19h-2a2 2 0 0 1-2-2 2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2 2 2 0 0 1-2 2H7a2 2 0 0 1-2-2 8 8 0 0 1 16 0 2 2 0 0 1-2 2Z" />
                       </svg>
                       Cruelty-Free
+                    </div>
+                    <div className="flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="mr-1 text-herb-600"
+                      >
+                        <rect width="20" height="14" x="2" y="3" rx="2" />
+                        <line x1="8" x2="16" y1="21" y2="21" />
+                        <line x1="12" x2="12" y1="17" y2="21" />
+                      </svg>
+                      Free Shipping
                     </div>
                   </div>
                 </div>
@@ -245,30 +263,17 @@ function Detail() {
                     </div>
                   </div>
                 ))} */}
-                <CardProducts
-                    title="Lavender Bliss"
-                    image={<img src="/src/assets/img/product.png" alt="" className='w-full h-auto object-cover' />}
-                    description="Calming lavender soap with essential oils to help you relax and unwind after a long day."
+                <Link to="/detail">
+                  <CardProducts
+                    name="Lavender Bliss"
+                    image={
+                      <div className='bg-[#ecf8f3]'>
+                        <img src="/src/assets/img/product.png" alt="" className='scale-75 object-cover' />
+                      </div>
+                    }
                     price="$5.99"
-                />
-                <CardProducts
-                    title="Lavender Bliss"
-                    image={<img src="/src/assets/img/product.png" alt="" className='w-full h-auto object-cover' />}
-                    description="Calming lavender soap with essential oils to help you relax and unwind after a long day."
-                    price="$5.99"
-                />
-                <CardProducts
-                    title="Lavender Bliss"
-                    image={<img src="/src/assets/img/product.png" alt="" className='w-full h-auto object-cover' />}
-                    description="Calming lavender soap with essential oils to help you relax and unwind after a long day."
-                    price="$5.99"
-                />
-                <CardProducts
-                    title="Lavender Bliss"
-                    image={<img src="/src/assets/img/product.png" alt="" className='w-full h-auto object-cover' />}
-                    description="Calming lavender soap with essential oils to help you relax and unwind after a long day."
-                    price="$5.99"
-                />
+                  />
+                </Link>
               </div>
             </div>
           </div>

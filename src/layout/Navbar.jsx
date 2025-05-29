@@ -11,9 +11,9 @@ function Navbar() {
                 <ul className='grid grid-cols-5 place-items-center gap-2 font-medium'>
                     <Link to="/"><li>HOME</li></Link>
                     <Link to="/shop"><li>SHOP</li></Link>
-                    <Link to="/blog"><li>BLOG</li></Link>
+                    <Link to=""><li>BLOG</li></Link>
                     <Link to="/contact"><li>CONTACT</li></Link>
-                    <Link to="/about"><li>ABOUT</li></Link>
+                    <Link to=""><li>ABOUT</li></Link>
                 </ul>
                 <div className="flex items-center gap-4">
                     <button className="flex items-center justify-center h-9 w-9 rounded-full hover:bg-soap-100 transition-colors">
