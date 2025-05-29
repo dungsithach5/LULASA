@@ -1,29 +1,19 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-
-export default function MediaCard({image, name, review}) {
+import React from 'react';
+export default function CardCustomer({image, name, review}) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
-        {image}
-      <CardContent>
-        <Typography 
-            sx={
-                { 
-                    fontFamily: 'Poppins, san-serif',
-                    fontWeight: '500',
-                    textAlign: 'center',
-                }}>
-          {name}
-        </Typography>
-        <Typography>
-          {review}
-        </Typography>
-      </CardContent>
-    </Card>
+    <div className="text-left space-y-1">
+      {image}
+      <h3 className="text-lg font-medium">{name}</h3>
+      <div className='flex space-x-1'>
+        {[...Array(5)].map((_, index) => (
+          <img
+            key={index}
+            src="src/assets/icon/star.png"
+            alt="star"
+          />
+        ))}
+      </div>
+      <p className="text-gray-600 text-sm italic">" {review} "</p>
+    </div>
   );
 }

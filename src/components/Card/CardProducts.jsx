@@ -7,29 +7,21 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
-export default function MediaCard({title, description, price, image}) {
+export default function CardProducts({name, price, image}) {
   return (
-    <Card sx={{ minHeight: 525,}}>
-      {image}
+    <Card sx={{ minHeight: 300}} elevation={0}>
       <CardContent>
-        <Typography 
-        gutterBottom variant="h5" 
-        component="div" 
-        sx={
-          { 
-            fontFamily: 'Poppins, san-serif',
-            fontWeight: '500'
-          }}>
-          {title} 
+        {image}
+        <Typography>
+          <span className="font-medium text-xl">{name}</span>
         </Typography>
         <Typography sx={{ fontFamily: 'Poppins, san-serif' }}>
-          {description}
+          <span className="font-medium">{price}</span>
         </Typography>
       </CardContent>
-      <CardActions className='flex justify-between'>
-        <span className="font-medium">{price}</span>
+      {/* <CardActions className='flex justify-between'>
         <Link to="/detail" className='bg-[#2D6E53] text-white p-2 px-4 rounded'>Add to cart</Link>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }
