@@ -50,7 +50,7 @@ const Index = () => {
         </section>
 
         {/* Benefits */}
-        <section className='bg-[#F9F7F6] py-14'>
+        <section className='bg-[#ecf8f3] py-14'>
           <div className='mx-52 flex flex-col justify-center items-center space-y-2'>
             <span className='text-[#2D6E53] text-xl font-medium'>Why Choose Us</span>
             <h1 className='text-4xl font-medium'>Benefits of Our Herbal Soaps</h1>
