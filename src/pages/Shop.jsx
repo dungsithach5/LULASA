@@ -1,9 +1,26 @@
+import React, { useEffect, useState } from 'react';
 import Layout from "../layout/Layout";
 import CardProducts from '../components/Card/CardProducts';
 import Breadcrumbs from '../components/BreadCrumb';
 import Checkbox from '../components/CheckboxLabels'
 import { Link } from 'react-router-dom';
+import { fetchProducts } from '../service/api/productApi.js'
 const Shop = () => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const getProducts = async () => {
+        try {
+            const data = await fetchProducts();
+            setProducts(data);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        }
+        };
+
+        getProducts();
+    }, []);
+
     return (
         <Layout>
             <div className='relative bg-[#ecf8f3] w-full mt-16 pb-20'>
@@ -50,17 +67,19 @@ const Shop = () => {
                         </div>
                     </div>
                     <div className="grid grid-cols-3 gap-2 border-t-1">
-                        <Link to="/detail" className="h-auto">
+                        {products.map((product) => (
+                            <Link to={`/detail/${product.id}`} key={product.id}>
                             <CardProducts
-                                name="Lavender Bliss"
+                                name={product.name}
                                 image={
-                                    <div className='bg-[#ecf8f3]'>
-                                        <img src="/src/assets/img/product.png" alt="" className='scale-75 object-cover' />
-                                    </div>
+                                <div className=''>
+                                    <img src={product.main_image_url} alt={product.name} className='object-cover' />
+                                </div>
                                 }
-                                price="$5.99"
+                                price={`$${product.price}`}
                             />
-                        </Link>
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </section>

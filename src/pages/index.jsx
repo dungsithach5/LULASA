@@ -1,12 +1,29 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Layout from "../layout/Layout";
 import CardBenefits from '../components/Card/CardBenefits';
 import CardProducts from '../components/Card/CardProducts';
 import CardCustomer from '../components/Card/CardCustomer';
 import { ShieldCheck, Heart, Bath, Leaf, Droplet, HandHeart, ArrowDownRight } from 'lucide-react';
+import { fetchProducts } from '../service/api/productApi.js'
+
 
 const Index = () => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+      const getProducts = async () => {
+        try {
+          const data = await fetchProducts();
+          setProducts(data);
+        } catch (error) {
+          console.error('Error fetching products:', error);
+        }
+      };
+
+      getProducts();
+    }, []);
+
     return (
       <Layout>
         {/* Hero section */}
@@ -35,18 +52,20 @@ const Index = () => {
 
           {/* Product cards */}
           <div className='mx-52 mt-12 grid grid-cols-4 gap-8'>
-            <Link to="/detail">
-              <CardProducts
-                name="Lavender Bliss"
-                image={
-                  <div className='bg-[#ecf8f3]'>
-                    <img src="/src/assets/img/product.png" alt="" className='scale-75 object-cover' />
-                  </div>
-                }
-                price="$5.99"
-              />
-            </Link>
-          </div>
+              {products.map((product) => (
+                <Link to={`/detail/${product.id}`} key={product.id}>
+                  <CardProducts
+                    name={product.name}
+                    image={
+                      <div className=''>
+                        <img src={product.main_image_url} alt={product.name} className='object-cover' />
+                      </div>
+                    }
+                    price={`$${product.price}`}
+                  />
+                </Link>
+              ))}
+            </div>
         </section>
 
         {/* Benefits */}
@@ -92,17 +111,19 @@ const Index = () => {
 
           {/* Product cards */}
           <div className='mx-52 mt-12 grid grid-cols-4 gap-8'>
-            <Link to="/detail">
-              <CardProducts
-                name="Lavender Bliss"
-                image={
-                  <div className='bg-[#ecf8f3]'>
-                    <img src="/src/assets/img/product.png" alt="" className='scale-75 object-cover' />
-                  </div>
-                }
-                price="$5.99"
-              />
-            </Link>
+            {products.map((product) => (
+              <Link to={`/detail/${product.id}`} key={product.id}>
+                <CardProducts
+                  name={product.name}
+                  image={
+                    <div className=''>
+                      <img src={product.main_image_url} alt={product.name} className='object-cover' />
+                    </div>
+                  }
+                  price={`$${product.price}`}
+                />
+              </Link>
+            ))}
           </div>
         </section>
 
