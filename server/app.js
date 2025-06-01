@@ -8,6 +8,7 @@ const categoryRoute = require('./routes/CategoryRoute.js');
 const orderRoute = require('./routes/OrderRoute.js');
 const contactRoute = require('./routes/ContactRoute.js');
 const reviewRoute = require('./routes/ReviewRoute.js');
+const productImageRoute = require('./routes/ProductImageRoute.js');
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use('/api/categories', categoryRoute);
 app.use('/api/orders', orderRoute);
 app.use('/api/contacts', contactRoute);
 app.use('/api/reviews', reviewRoute);
+app.use('/api/productimages', productImageRoute);
 
 // Start Server
 app.listen(PORT, () => {
