@@ -1,5 +1,6 @@
 'use strict';
 const { Model } = require('sequelize');
+const bcrypt = require('bcrypt');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -23,34 +24,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    role: {
-      type: DataTypes.STRING,
-      defaultValue: 'user',
-    },
-    occupation: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
-    phoneNumber: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    avatar: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    social: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
   }, {
     sequelize,
     modelName: 'User',
   });
 
+  User.beforeCreate(async (user) => {
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(user.password, salt);
+  });
+
   return User;
 };
+
