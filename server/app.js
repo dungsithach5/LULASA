@@ -1,14 +1,9 @@
 const express = require('express');
-const bodyParser = require('body-parser');
+const router = require('./routes/index');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 // const path = require('path');
-const productRoute = require('./routes/ProductRoute.js');
-const categoryRoute = require('./routes/CategoryRoute.js');
-const orderRoute = require('./routes/OrderRoute.js');
-const contactRoute = require('./routes/ContactRoute.js');
-const reviewRoute = require('./routes/ReviewRoute.js');
-const productImageRoute = require('./routes/ProductImageRoute.js');
 
 dotenv.config();
 
@@ -19,18 +14,16 @@ const PORT = 3000;
 // app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Middleware
-app.use(bodyParser.json());
 app.use(cors());
+// app.use(cors({
+//   origin: 'http://localhost:5173',
+//   credentials: true,  
+// }));
 app.use(express.json());
-
+app.use(cookieParser());
 
 // Routes
-app.use('/api/products', productRoute);
-app.use('/api/categories', categoryRoute);
-app.use('/api/orders', orderRoute);
-app.use('/api/contacts', contactRoute);
-app.use('/api/reviews', reviewRoute);
-app.use('/api/productimages', productImageRoute);
+router(app)
 
 // Start Server
 app.listen(PORT, () => {
