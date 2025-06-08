@@ -24,30 +24,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      role: {
-        type: Sequelize.STRING,
-        defaultValue: 'user',
-      },
-      occupation: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      description: {
-        type: Sequelize.TEXT,
-        allowNull: true,
-      },
-      phoneNumber: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      avatar: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      social: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
