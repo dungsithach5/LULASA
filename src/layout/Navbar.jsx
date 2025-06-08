@@ -1,19 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import { ShoppingCart, Search, CircleUserRound } from "lucide-react";
 import Drawer from '../components/Drawer'
 import { fetchProducts } from '../service/api/productApi.js';
+import { UserContext } from '/src/context/UserContext';
+import { CartContext } from '/src/context/CartContext';
+import { useCart } from '/src/context/CartContext';
 
 function Navbar() {
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [products, setProducts] = useState([]);
+    const { userName } = useContext(UserContext);
+    const { cartItems } = useContext(CartContext);
+    const { totalQuantity } = useCart();
+
 
     const handleSearch = (e) => {
         const query = e.target.value.toLowerCase();
         setSearchQuery(query);
 
-        // Filter products based on the search query
         const filtered = products.filter(product =>
             product.name.toLowerCase().includes(query)
         );
@@ -84,25 +90,62 @@ function Navbar() {
                             </div>
                         }
                     />
-                    <button>
+                    {userName ? (
+                    <div className="avatar-text cursor-default" title={`Hello, ${userName}`}>
+                        Hello, <strong>{userName}</strong>
+                    </div>
+                    ) : (
+                    <Link to='/login'>
                         <CircleUserRound className='h-5 w-5' />
                         <span className="sr-only">Account</span>
-                    </button>
+                     </Link>
+                    )}
                     <Drawer 
                         icon={
                             <button className="flex items-center justify-center h-9 w-9 rounded-full hover:bg-soap-100 transition-colors relative cursor-pointer">
                                 <ShoppingCart className="h-5 w-5" />
                                 <span className="sr-only">Cart</span>
-                                <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-[#2D6E53] text-white text-xs flex items-center justify-center">
-                                    0
-                                </span>
+                                {totalQuantity > 0 && (
+                                    <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-[#2D6E53] text-white text-xs flex items-center justify-center">
+                                    {totalQuantity}
+                                    </span>
+                                )}
                             </button>
                         }
                         anchor="right"
                         content={
-                            <div className="p-4">
-                                <h2 className="text-lg font-bold">Your Cart</h2>
-                                <p>No items in the cart.</p>
+                            <div className='p-4'>
+                                <p className='text-lg'>Your cart</p>
+                                <div className="mt-2">
+                                    {cartItems.length === 0 ? (
+                                        <div className="text-center text-gray-500">
+                                        <p>No items in your cart.</p>
+                                        </div>
+                                    ) : (
+                                        cartItems.map((item) => (
+                                        <div key={item.id} className="flex items-center justify-between border-b pb-2">
+                                            <div className='flex space-x-4'>
+                                            <img src={item.main_image_url} className='w-20 h-20' />
+                                            <div className='space-y-1'>
+                                                <h3 className="text-md font-medium text-gray-800">{item.name}</h3>
+                                                <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
+                                                <p className="text-md font-medium text-gray-700">${(item.price * item.quantity).toFixed(2)}</p>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        ))
+                                    )}
+                                    {cartItems.length > 0 && (
+                                        <div className="flex justify-between items-center mt-4">
+                                            <p className="text-lg font-medium text-gray-900">
+                                                Total: ${cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}
+                                            </p>
+                                            <button className="px-4 py-2 bg-[#2D6E53] text-white rounded hover:bg-green-700 transition cursor-pointer">
+                                                Checkout
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         }
                     />
