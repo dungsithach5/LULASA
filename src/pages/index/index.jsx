@@ -145,27 +145,27 @@ const Index = () => {
           {/* Customer reviews */}
           <div className='px-4 md:px-8 lg:mx-52 mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8 place-items-start'>
             <CardCustomer
-              image={<img src="/public/img/Customer/customer1.jpg" alt="" className='object-cover' />}
+              image={<img src="img/Customer/customer1.jpg" alt="" className='object-cover' />}
               name='Nguyen Thi Viet Trinh'
               review="Calming lavender soap with essential oils to help you relax and unwind after a long day."
             />
             <CardCustomer
-              image={<img src="/public/img/Customer/customer2.jpg" alt="" className='object-cover' />}
+              image={<img src="img/Customer/customer2.jpg" alt="" className='object-cover' />}
               name='Pieg'
               review="Calming lavender soap with essential oils to help you relax and unwind after a long day."
             />
             <CardCustomer
-              image={<img src="/public/img/Customer/customer3.jpg" alt="" className='object-cover' />}
+              image={<img src="img/Customer/customer3.jpg" alt="" className='object-cover' />}
               name='Nguyen Cao Nhu Hao'
               review="Calming lavender soap with essential oils to help you relax and unwind after a long day."
             />
             <CardCustomer
-              image={<img src="/public/img/Customer/customer1.jpg" alt="" className='object-cover' />}
+              image={<img src="img/Customer/customer1.jpg" alt="" className='object-cover' />}
               name='Nguyen Thi Viet Trinh'
               review="Calming lavender soap with essential oils to help you relax and unwind after a long day."
             />
             <CardCustomer
-              image={<img src="/public/img/Customer/customer2.jpg" alt="" className='object-cover' />}
+              image={<img src="img/Customer/customer2.jpg" alt="" className='object-cover' />}
               name='Pieg'
               review="Calming lavender soap with essential oils to help you relax and unwind after a long day."
             />
