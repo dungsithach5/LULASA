@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // // Serve static files
 // app.use("/uploads", express.static(path.join(__dirname, "uploads")));
