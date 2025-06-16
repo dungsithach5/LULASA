@@ -6,6 +6,9 @@ import { fetchProducts } from '../service/api/productApi.js';
 import { UserContext } from '/src/context/UserContext';
 import { CartContext } from '/src/context/CartContext';
 import { useCart } from '/src/context/CartContext';
+import Cookies from 'js-cookie';
+// import { useNavigate } from 'react-router-dom';
+
 
 function Navbar() {
     const [searchQuery, setSearchQuery] = useState('');
@@ -13,8 +16,10 @@ function Navbar() {
     const [products, setProducts] = useState([]);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { userName } = useContext(UserContext);
+    const { setUserName } = useContext(UserContext);
     const { cartItems } = useContext(CartContext);
     const { totalQuantity } = useCart();
+    // const navigate = useNavigate();
 
     const handleSearch = (e) => {
         const query = e.target.value.toLowerCase();
@@ -24,6 +29,13 @@ function Navbar() {
             product.name.toLowerCase().includes(query)
         );
         setFilteredProducts(filtered);
+    };
+
+    const handleLogout = () => {
+        Cookies.remove('token');
+        Cookies.remove('userName');
+        setUserName(null);
+        // navigate('/');
     };
 
     useEffect(() => {
@@ -38,6 +50,13 @@ function Navbar() {
 
         getProducts();
     }, []);
+
+    useEffect(() => {
+        const nameFromCookie = Cookies.get("userName");
+        if (nameFromCookie) {
+          setUserName(nameFromCookie);
+        }
+      }, []);
 
     return (
         <div className='bg-white fixed top-0 left-0 right-0 z-50 shadow-xs'>
@@ -107,9 +126,18 @@ function Navbar() {
                             }
                         />
                         {userName ? (
-                            <div className="avatar-text cursor-default hidden sm:block" title={`Hello, ${userName}`}>
-                                Hello, <strong>{userName}</strong>
-                            </div>
+                            <div className="flex items-center gap-2 hidden sm:flex">
+                                <span className="avatar-text cursor-default" title={`Hello, ${userName}`}>
+                                    Hello, <strong>{userName}</strong>
+                                </span>
+                                <span className="text-black">|</span>
+                                <button
+                                    onClick={handleLogout}
+                                    className="text-red-600 hover:underline cursor-pointer"
+                                >
+                                    Logout
+                                </button>
+                                </div>
                         ) : (
                             <Link to='/login'>
                                 <CircleUserRound className='h-5 w-5' />
