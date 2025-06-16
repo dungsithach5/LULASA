@@ -17,7 +17,8 @@
     "username": "root",
     "password": "",
     "database": "lulasa",
-    "host": "127.0.0.1",
+    "host": "lulasa-production.up.railway.app",
+    "port": 7755,
     "dialect": "mysql"
   }
 }
