@@ -15,10 +15,10 @@
   },
   "production": {
     "username": "root",
-    "password": "",
-    "database": "lulasa",
-    "host": "lulasa-production.up.railway.app",
-    "port": 7755,
+    "password": "CtyDKCnPgnDUaIdMiLoYnCfsPiVQspxz",
+    "database": "railway",
+    "host": "shortline.proxy.rlwy.net",
+    "port": 22471,
     "dialect": "mysql"
   }
 }
