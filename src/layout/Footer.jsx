@@ -48,18 +48,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Links Section */}
-        <div>
-          <h3 className="text-[15px] font-semibold">LINKS</h3>
-          <ul className="mt-4 space-y-2">
-            <li className="text-sm opacity-90">Home</li>
-            <li className="text-sm opacity-90">Shop</li>
-            <li className="text-sm opacity-90">Blog</li>
-            <li className="text-sm opacity-90">Contact</li>
-            <li className="text-sm opacity-90">About Us</li>
-          </ul>
-        </div>
-
         {/* Shop Section */}
         <div>
           <h3 className="text-[15px] font-semibold">SHOP</h3>
@@ -71,6 +59,18 @@ const Footer = () => {
             <li className="text-sm opacity-90">Ingredients</li>
             <li className="text-sm opacity-90">Facial Care</li>
             <li className="text-sm opacity-90">Last Chance</li>
+          </ul>
+        </div>
+
+        {/* Links Section */}
+        <div>
+          <h3 className="text-[15px] font-semibold">LINKS</h3>
+          <ul className="mt-4 space-y-2">
+            <li className="text-sm opacity-90">Home</li>
+            <li className="text-sm opacity-90">Shop</li>
+            <li className="text-sm opacity-90">Blog</li>
+            <li className="text-sm opacity-90">Contact</li>
+            <li className="text-sm opacity-90">About Us</li>
           </ul>
         </div>
 

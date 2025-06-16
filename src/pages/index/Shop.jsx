@@ -53,18 +53,71 @@ const Shop = () => {
 
                 <div className="px-4 md:mx-20 lg:mx-52 flex flex-col lg:flex-row gap-6 mt-6">
                     {/* Filter */}
-                    <div className="w-full lg:w-[250px] space-y-6">
-                        <div className="pb-4 border-b border-gray-300">
-                            <h4 className="font-medium text-xl mb-4 pl-4 border-l-4 border-black">Category</h4>
-                            <ul className="space-y-2 pl-2">
-                                <li><Link to="">Essential Oils</Link></li>
-                                <li><Link to="">Diffusers</Link></li>
-                                <li><Link to="">Accessories</Link></li>
+                    <div className="w-full lg:w-[280px] space-y-6">
+                        <div className="pb-6 border-b border-gray-200">
+                            <h4 className="font-semibold text-xl mb-4 pl-4 border-l-4 border-[#4CAF50]">Category</h4>
+                            <ul className="space-y-3 pl-2">
+                                <li>
+                                    <Link to="" className="text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center">
+                                        <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
+                                        Syzygium
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="" className="text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center">
+                                        <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
+                                        Camellia
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="" className="text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center">
+                                        <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
+                                        P.betle
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="" className="text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center">
+                                        <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
+                                        Herbal
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
-                        <div className="pb-4 border-b border-gray-300">
-                            <h4 className="font-medium text-xl mb-4 pl-4 border-l-4 border-black">Price</h4>
-                            <Checkbox />
+                        <div className="pb-6 border-b border-gray-200">
+                            <h4 className="font-semibold text-xl mb-4 pl-4 border-l-4 border-[#4CAF50]">Price Range</h4>
+                            <div className="pl-2">
+                                <Checkbox />
+                            </div>
+                        </div>
+                        <div className="pb-6 border-b border-gray-200">
+                            <h4 className="font-semibold text-xl mb-4 pl-4 border-l-4 border-[#4CAF50]">Availability</h4>
+                            <div className="space-y-3 pl-2">
+                                <label className="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" className="form-checkbox h-4 w-4 text-[#4CAF50] rounded border-gray-300 focus:ring-[#4CAF50]" />
+                                    <span className="text-gray-600">In Stock</span>
+                                </label>
+                                <label className="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" className="form-checkbox h-4 w-4 text-[#4CAF50] rounded border-gray-300 focus:ring-[#4CAF50]" />
+                                    <span className="text-gray-600">Out of Stock</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-xl mb-4 pl-4 border-l-4 border-[#4CAF50]">Rating</h4>
+                            <div className="space-y-3 pl-2">
+                                <label className="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" className="form-checkbox h-4 w-4 text-[#4CAF50] rounded border-gray-300 focus:ring-[#4CAF50]" />
+                                    <span className="text-gray-600">★★★★★</span>
+                                </label>
+                                <label className="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" className="form-checkbox h-4 w-4 text-[#4CAF50] rounded border-gray-300 focus:ring-[#4CAF50]" />
+                                    <span className="text-gray-600">★★★★☆</span>
+                                </label>
+                                <label className="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" className="form-checkbox h-4 w-4 text-[#4CAF50] rounded border-gray-300 focus:ring-[#4CAF50]" />
+                                    <span className="text-gray-600">★★★☆☆</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
 
