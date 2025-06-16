@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '/src/context/UserContext';
+import Cookies from 'js-cookie';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -22,12 +23,11 @@ function Login() {
       });
 
       const data = res.data;
+      
+      Cookies.set('token', data.token, { expires: 1/24 }); // 1/24 = 1 hour
+      Cookies.set('userName', data.name, { expires: 1/24 });
 
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('token', data.token);
-      }
       setMsg(`Xin chào ${data.name}`);
-
       setUserName(data.name);
 
       navigate('/'); 
