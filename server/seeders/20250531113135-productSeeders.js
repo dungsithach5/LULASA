@@ -10,7 +10,7 @@ module.exports = {
         long_desc:'Each soap bar – a miniature herbal garden. The perfect combination of extracts from guava leaves, green tea, betel leaves with basil, lemongrass, mint and rosemary, Herbal Soap is a great choice for those who love the balance between purifying and nourishing the skin. The gentle, delicate herbal scent helps relax the mind, while nourishing the skin to be soft, smooth and healthy every day.',
         ingredients: 'Piper betle leaf extract & coconut oil.',
         price: 19.99,
-        main_image_url: '/public/img/Product/product1.png',
+        main_image_url: '/img/Product/product1.png',
         createdAt: new Date(),
         updatedAt: new Date()
       },
