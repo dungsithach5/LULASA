@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 // const path = require('path');
+const allowedOrigins = ['http://localhost:5173', 'https://lulasa.vercel.app'];
 
 dotenv.config();
 
@@ -14,10 +15,17 @@ const PORT = process.env.PORT || 3000;
 // app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Middleware
+// app.use(cors());
 app.use(cors({
-  origin: 'https://lulasa.vercel.app/',
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
-}));
+}))
 app.use(express.json());
 app.use(cookieParser());
 
