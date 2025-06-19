@@ -108,7 +108,7 @@ const Index = () => {
             </div>
 
             {/* Card benefits */}
-            <div className='mt-8 md:mt-10 grid grid-cols-1 min-[320px]:grid-cols-2 sm:grid-cols-2 gap-6 place-items-start'>
+            <div className='mt-8 md:mt-10 grid grid-cols-1 min-[320px]:grid-cols-2 sm:grid-cols-2 gap-4'>
               <CardBenefits
                 title="Natural Ingredients"
                 icon={<ShieldCheck className="text-green-600" size={25} />}

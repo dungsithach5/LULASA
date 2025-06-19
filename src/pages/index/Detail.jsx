@@ -89,7 +89,7 @@ function Detail() {
 
               <div className="flex items-center">
                 <span className="text-2xl font-medium text-herb-700">
-                  ${product.price}
+                  {product.price} VND
                 </span>
               </div>
 
@@ -152,7 +152,7 @@ function Detail() {
                     sx={{backgroundColor:'#2D6E53'}}
                     onClick={() => addToCart(product, quantity)}
                     >
-                    Add to Cart - ${(product.price * quantity).toFixed(2)}
+                    Add to Cart - {product.price * quantity} VND
                   </Button>
                   <Button
                       variant="outlined"
