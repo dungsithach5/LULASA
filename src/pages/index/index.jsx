@@ -114,7 +114,7 @@ const Index = () => {
                           />
                         </div>
                       }
-                      price={`$${product.price}`}
+                      price={`${product.price} VND`}
                     />
                   </Link>
                 ))}
@@ -125,7 +125,7 @@ const Index = () => {
         {/* CTA */}
         <section className="relative h-[300px] md:h-[350px] flex items-center">
           <img
-            src="/public/img/banner-shop.jpg"
+            src="/img/banner-shop.jpg"
             alt="banner shop"
             className="absolute inset-0 w-full h-full object-cover z-0"
           />
@@ -186,7 +186,7 @@ const Index = () => {
 
         {/* Our Mission */}
         <section className='bg-[#ECF5ED] grid grid-cols-1 lg:grid-cols-2'>
-            <img src="/public/img/nature.jpeg" alt="Mission Image" className='object-cover w-full h-[300px] md:h-[400px] lg:h-full'/>
+            <img src="/img/nature.jpeg" alt="Mission Image" className='object-cover w-full h-[300px] md:h-[400px] lg:h-full'/>
             <div className='grid grid-cols-1 place-items-center py-10 md:py-0'>
               <div className='px-4 md:px-8 lg:px-40 space-y-6'>
                 <div className='flex flex-col justify-center space-y-2'>
