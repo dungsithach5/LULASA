@@ -39,17 +39,17 @@ const Index = () => {
 
           {/* Text content */}
           <div className='px-4 md:px-8 lg:mx-52 absolute inset-0 flex justify-center items-center'>
-            <div className='text-center text-white md:space-y-2 flex flex-col items-center'>
-              <h1 className='logo-font italic font-medium text-4xl md:text-5xl lg:text-8xl'>
+            <div className='text-center text-white min-[320px]:space-y-4 md:space-y-2 flex flex-col items-center'>
+              <h1 className='logo-font italic font-medium text-4xl min-[320px]:text-5xl md:text-5xl lg:text-8xl'>
                 Handcrafted  Soap <br /> for Natural Skincare
               </h1>
-              <span className='md:text-lg'>
+              <span className='md:text-lg min-[320px]:text-sm'>
                 Discover our range of luxurious handmade soaps <br className='hidden md:block' />
                 that nourish your skin with the power of nature.
               </span>
               <Link
                 to="/shop"
-                className='border border-white md:mt-4 md:w-40 h-10 md:h-12 flex items-center justify-center rounded'
+                className='border border-white min-[320px]:w-40 md:mt-4 md:w-40 h-10 md:h-12 flex items-center justify-center rounded'
               >
                 <span className='text-white'>Shop Now</span>
                 <ArrowDownRight className='inline ml-2 text-white' size={20} />
@@ -59,30 +59,29 @@ const Index = () => {
         </section>
 
         {/* Benefits */}
-        <section className='bg-[#ECF5ED] py-10'>
-            {/* Card benefits */}
-            <div className='mx-52 grid min-[320px]:grid-cols-2 md:grid-cols-4 gap-4'>
-              <CardBenefits
-                title="Natural Ingredients"
-                icon={<ShieldCheck className="text-green-600" size={28} />}
-                description="Our soaps are made with 100% natural ingredients, free from harmful chemicals."
-              />
-              <CardBenefits
-                title="Handcrafted"
-                icon={<Heart className="text-green-600" size={28} />}
-                description="Each soap is handcrafted with love, ensuring quality and care in every bar."
-              />
-              <CardBenefits
-                title="Eco-Friendly"
-                icon={<Leaf className="text-green-600" size={28} />}
-                description="We use sustainable practices to create our soaps, reducing our carbon footprint."
-              />
-              <CardBenefits
-                title="Skin-loving"
-                icon={<Bath className="text-green-600" size={28} />}
-                description="Gentely formulated to suitable for all skin types, including sensitive skin."
-              />
-            </div>
+        <section className="bg-[#ECF5ED] py-10 px-4">
+          <div className="mx-52 grid grid-cols-1 min-[320px]:mx-0 min-[320px]:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <CardBenefits
+              title="Natural Ingredients"
+              icon={<ShieldCheck className="text-green-600" size={28} />}
+              description="Our soaps are made with 100% natural ingredients, free from harmful chemicals."
+            />
+            <CardBenefits
+              title="Handcrafted"
+              icon={<Heart className="text-green-600" size={28} />}
+              description="Each soap is handcrafted with love, ensuring quality and care in every bar."
+            />
+            <CardBenefits
+              title="Eco-Friendly"
+              icon={<Leaf className="text-green-600" size={28} />}
+              description="We use sustainable practices to create our soaps, reducing our carbon footprint."
+            />
+            <CardBenefits
+              title="Skin-loving"
+              icon={<Bath className="text-green-600" size={28} />}
+              description="Gently formulated to be suitable for all skin types, including sensitive skin."
+            />
+          </div>
         </section>
 
         {/* Products */}
@@ -155,7 +154,7 @@ const Index = () => {
           </div>
 
           {/* Customer reviews */}
-          <div className='px-4 md:px-8 lg:mx-52 mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8 place-items-start'>
+          <div className='px-4 md:px-8 lg:mx-52 mt-8 md:mt-12 grid grid-cols-1 min-[320px]:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 md:gap-8 place-items-start'>
             <CardCustomer
               image={<img src="img/Customer/customer1.jpg" alt="" className='object-cover' />}
               name='Nguyen Thi Viet Trinh'
@@ -188,13 +187,13 @@ const Index = () => {
         <section className='bg-[#ECF5ED] grid grid-cols-1 lg:grid-cols-2'>
             <img src="/img/nature.jpeg" alt="Mission Image" className='object-cover w-full h-[300px] md:h-[400px] lg:h-full'/>
             <div className='grid grid-cols-1 place-items-center py-10 md:py-0'>
-              <div className='px-4 md:px-8 lg:px-40 space-y-6'>
+              <div className='px-4 md:px-8 lg:px-40 space-y-6 min-[320px]:px-8'>
                 <div className='flex flex-col justify-center space-y-2'>
                   <span className='text-[#2D6E53] text-lg md:text-xl font-medium'>Our Mission</span>
                   <h1 className='text-3xl md:text-4xl font-medium'>Naturally Made <br/> Handcrafted with Care</h1>
                 </div>
                 <p className='text-[#858585] text-justify'>We are dedicated to creating natural, eco-friendly biological soaps that care for your skin while protecting the environment. By using plant-based, biodegradable ingredients and minimizing harmful chemicals, we promote a healthier lifestyle and a cleaner planet. Our mission is to encourage sustainable living through simple, everyday choices — starting with the soap you use.</p>
-                <div className='grid grid-cols-2 md:grid-cols-4 gap-6'>
+                <div className='grid grid-cols-2 md:grid-cols-4 gap-6 min-[320px]:grid-cols-4'>
                   <div className='grid grid-cols-1 place-items-center space-y-2'>
                     <div className="w-14 h-14 md:w-16 md:h-16 bg-[#DCEFE1] rounded-full flex items-center justify-center">
                       <HandHeart className="text-[#2D6E53]" size={28} />

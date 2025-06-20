@@ -27,7 +27,7 @@ const Footer = () => {
           <p className="text-sm mt-4 opacity-90">
             Subscribe to get special offers, free gifts and <br /> keep up with what’s happening at LULASA
           </p>
-          <form className="mt-5 flex flex-col sm:flex-row items-center gap-2">
+          <form className="mt-5 items-center space-y-4 min-[320px]:space-x-2">
             <input
               type="email"
               placeholder="Enter your email"
@@ -40,7 +40,7 @@ const Footer = () => {
               Submit
             </button>
           </form>
-          <div className="flex space-x-3 mt-5">
+          <div className="flex space-x-3 mt-5 min-[320px]:hidden">
             <Instagram />
             <Facebook />
             <Youtube />
