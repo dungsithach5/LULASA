@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     cart_desc: DataTypes.STRING,
     long_desc: DataTypes.TEXT,
     ingredients: DataTypes.TEXT,
-    price: DataTypes.FLOAT,
+    price: DataTypes.INTEGER,
     main_image_url: DataTypes.STRING,
     category_id: DataTypes.INTEGER,
     imported_date: DataTypes.DATE
