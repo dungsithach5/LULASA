@@ -8,7 +8,7 @@ export default function CardCustomer({image, name, review}) {
         {[...Array(5)].map((_, index) => (
           <img
             key={index}
-            src="src/assets/icon/star.png"
+            src="/icon/star.png"
             alt="star"
           />
         ))}
