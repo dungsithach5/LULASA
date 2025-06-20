@@ -48,80 +48,77 @@ function Detail() {
   return (
     <Layout>
       {/* Product Detail */}
-      <section className="mx-52 mt-12 py-12">
+      <section className="mx-4 min-[320px]:mt-12 sm:mx-8 md:mx-20 lg:mx-52 px-2 sm:px-4 md:px-6 lg:px-8 mt-6 md:mt-10 lg:mt-12 py-6 md:py-10 lg:py-12">
         <BreadCrumb namepage={product.name} />
-        <div className="container px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="container px-0 sm:px-2 md:px-4 lg:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 lg:gap-12 mt-4 md:mt-6">
             {/* Product Images */}
-            <div className='flex justify-center items-center'>
+            <div className="flex justify-center items-center">
               <img
                 src={product.main_image_url}
                 alt={product.name}
-                className="object-cover min-w-[500px]"
+                className="object-cover w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl"
               />
             </div>
             {/* Product Info */}
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               <div>
-                <h1 className="text-3xl font-semibold">{product.name}</h1>
-                <div className="flex items-center mt-2">
-                    <div className='flex space-x-1'>
-                      {[...Array(5)].map((_, index) => (
-                        <svg
-                          key={index}
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="20"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className='text-yellow-400'
-
-                        >
-                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                        </svg>
-                      ))}
-                    </div>
-                  <span className="ml-2 text-sm text-soap-600">
-                    ( 3 review )
-                  </span>
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold">{product.name}</h1>
+                <div className="flex items-center mt-1 sm:mt-2">
+                  <div className="flex space-x-1">
+                    {[...Array(5)].map((_, index) => (
+                      <svg
+                        key={index}
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="text-yellow-400"
+                      >
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="ml-2 text-xs sm:text-sm text-soap-600">( 3 review )</span>
                 </div>
               </div>
 
               <div className="flex items-center">
-                <span className="text-2xl font-medium text-herb-700">
+                <span className="text-xl sm:text-2xl font-medium text-herb-700">
                   {product.price} VND
                 </span>
               </div>
 
-              <p className="text-[#4a4747]">{product.short_desc}</p>
+              <p className="text-[#4a4747] text-xs sm:text-sm md:text-base">{product.short_desc}</p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="flex flex-col items-center p-4 bg-soap-50 rounded-lg">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
+                <div className="flex flex-col items-center p-3 md:p-4 bg-soap-50 rounded-lg">
                   <Bath className="h-6 w-6 text-[#2D6E53] mb-2" />
-                  <h3 className="font-medium text-sm">Handcrafted</h3>
+                  <h3 className="font-medium text-xs md:text-sm">Handcrafted</h3>
                   <p className="text-xs text-soap-600 text-center mt-1">
                     Made in small batches to ensure quality
                   </p>
                 </div>
-                <div className="flex flex-col items-center p-4 bg-soap-50 rounded-lg">
+                <div className="flex flex-col items-center p-3 md:p-4 bg-soap-50 rounded-lg">
                   <Droplets className="h-6 w-6 text-[#2D6E53] mb-2" />
-                  <h3 className="font-medium text-sm">100% Natural</h3>
+                  <h3 className="font-medium text-xs md:text-sm">100% Natural</h3>
                   <p className="text-xs text-soap-600 text-center mt-1">
                     No artificial fragrances or harsh chemicals
                   </p>
                 </div>
-                <div className="flex flex-col items-center p-4 bg-soap-50 rounded-lg">
+                <div className="flex flex-col items-center p-3 md:p-4 bg-soap-50 rounded-lg">
                   <Bath className="h-6 w-6 text-[#2D6E53] mb-2" />
-                  <h3 className="font-medium text-sm">Long-lasting</h3>
+                  <h3 className="font-medium text-xs md:text-sm">Long-lasting</h3>
                   <p className="text-xs text-soap-600 text-center mt-1">
                     Cured for 4-6 weeks for a harder, longer-lasting bar
                   </p>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-soap-100">
-                <div className="flex items-center">
-                  <span className="text-soap-600 mr-4">Quantity:</span>
+              <div className="pt-3 md:pt-4 border-t border-soap-100">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+                  <span className="text-soap-600 text-xs sm:text-sm">Quantity:</span>
                   <div className="flex items-center border border-soap-200 rounded">
                     <button
                       onClick={decreaseQuantity}
@@ -130,7 +127,7 @@ function Detail() {
                     >
                       -
                     </button>
-                    <span className="w-10 text-center">{quantity}</span>
+                    <span className="w-8 sm:w-10 text-center">{quantity}</span>
                     <button
                       onClick={increaseQuantity}
                       className="w-8 h-8 flex items-center justify-center cursor-pointer"
@@ -139,14 +136,11 @@ function Detail() {
                       +
                     </button>
                   </div>
-                  <span className="ml-4 text-sm text-soap-600">
-                    15 available
-                  </span>
+                  <span className="text-xs sm:text-sm text-soap-600">15 available</span>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
-
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                   <Button 
                     variant="contained" 
                     sx={{backgroundColor:'#2D6E53'}}
@@ -163,8 +157,8 @@ function Detail() {
                   </Button>
               </div>
 
-              <div className="pt-4 border-t border-soap-100">
-                <div className="flex items-center gap-4 text-sm text-soap-600">
+              <div className="pt-3 md:pt-4 border-t border-soap-100">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-soap-600">
                   <div className="flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -227,45 +221,24 @@ function Detail() {
           </div>
 
           {/* Product Tabs */}
-          <div className="mt-16">
-              <Tabs 
-                  description={product.long_desc}
-                  ingredients={product.ingredients}
-                  reviews="reviews"
-              />
-              {/* <TabsContent value="reviews" className="p-6 border rounded-md mt-2">
-                <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-xl font-medium">Customer Reviews</h3>
-                  <Button className="bg-herb-600 hover:bg-herb-700">Write a Review</Button>
-                </div>
-                <div className="space-y-6">
-                  {productDetails.reviews.map((review) => (
-                    <div key={review.id} className="border-b border-soap-100 pb-6">
-                      <div className="flex justify-between">
-                        <div>
-                          <h4 className="font-medium">{review.name}</h4>
-                          <div className="flex mt-1">{renderStars(review.rating)}</div>
-                        </div>
-                        <span className="text-soap-500 text-sm">{review.date}</span>
-                      </div>
-                      <p className="mt-2 text-soap-600">{review.comment}</p>
-                    </div>
-                  ))}
-                </div>
-              </TabsContent>
-            </Tabs> */}
+          <div className="mt-10 md:mt-16">
+            <Tabs 
+                description={product.long_desc}
+                ingredients={product.ingredients}
+                reviews="reviews"
+            />
           </div>
 
           {/* Related Products */}
-          <div className="mt-20">
-            <h2 className="text-2xl font-bold mb-8">You May Also Like</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-12 md:mt-20">
+            <h2 className="text-xl md:text-2xl font-bold mb-6 md:mb-8">You May Also Like</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               <Link to="/detail">
                 <CardProducts
                   name="Lavender Bliss"
                   image={
                     <div className='bg-[#ecf8f3]'>
-                      <img src="/src/assets/img/product.png" alt="" className='scale-75 object-cover' />
+                      <img src="/src/assets/img/product.png" alt="" className='scale-75 object-cover max-w-full' />
                     </div>
                   }
                   price="$5.99"

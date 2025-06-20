@@ -8,6 +8,8 @@ import { fetchProducts } from '../../service/api/productApi.js';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('');
+
 
     useEffect(() => {
         const getProducts = async () => {
@@ -22,11 +24,16 @@ const Shop = () => {
         getProducts();
     }, []);
 
+    const filteredProducts = products.filter((product) =>
+        selectedCategory === '' || 
+        product.category_id === selectedCategory
+      );
+
     return (
         <Layout>
             <div className='relative bg-[#ecf8f3] w-full mt-16 pb-20'>
-                <img src="/public/img/banner-shop.jpg" alt="banner shop" className='absolute w-full h-72 object-cover' />
-                <div className="absolute top-0 left-0 w-full h-72 bg-black opacity-50"></div>
+                <img src="/img/background.jpg" alt="banner shop" className='absolute w-full h-72 object-cover' />
+                <div className="absolute top-0 left-0 w-full h-72 bg-black opacity-30"></div>
                 <div className='relative px-4 md:mx-20 lg:mx-52 flex flex-col justify-center items-center text-center space-y-4 text-white'>
                     <h1 className='font-medium text-3xl md:text-4xl mt-28'>SHOP OUR COLLECTION</h1>
                     <Breadcrumbs />
@@ -58,28 +65,49 @@ const Shop = () => {
                             <h4 className="font-semibold text-xl mb-4 pl-4 border-l-4 border-[#4CAF50]">Category</h4>
                             <ul className="space-y-3 pl-2">
                                 <li>
-                                    <Link to="" className="text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center">
-                                        <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
+                                    <button
+                                        onClick={() => setSelectedCategory(1)}
+                                        className="text-left text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center w-full cursor-pointer"
+                                    >
+                                    <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
                                         Syzygium
-                                    </Link>
+                                    </button>
                                 </li>
                                 <li>
-                                    <Link to="" className="text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center">
-                                        <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
+                                    <button
+                                        onClick={() => setSelectedCategory(2)}
+                                        className="text-left text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center w-full cursor-pointer"
+                                    >
+                                    <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
                                         Camellia
-                                    </Link>
+                                    </button>
                                 </li>
                                 <li>
-                                    <Link to="" className="text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center">
-                                        <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
+                                    <button
+                                        onClick={() => setSelectedCategory(3)}
+                                        className="text-left text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center w-full cursor-pointer"
+                                    >
+                                    <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
                                         P.betle
-                                    </Link>
+                                    </button>
                                 </li>
                                 <li>
-                                    <Link to="" className="text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center">
-                                        <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
+                                    <button
+                                        onClick={() => setSelectedCategory(4)}
+                                        className="text-left text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center w-full cursor-pointer"
+                                    >
+                                    <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
                                         Herbal
-                                    </Link>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        onClick={() => setSelectedCategory('')}
+                                        className="text-left text-gray-600 hover:text-[#4CAF50] transition-colors duration-200 flex items-center w-full"
+                                    >
+                                    <span className="w-2 h-2 bg-[#4CAF50] rounded-full mr-2"></span>
+                                        All
+                                    </button>
                                 </li>
                             </ul>
                         </div>
@@ -123,19 +151,19 @@ const Shop = () => {
 
                     {/* Products */}
                     <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        {products.map((product) => (
-                            <Link to={`/detail/${product.id}`} key={product.id}>
-                                <CardProducts
-                                    name={product.name}
-                                    image={
-                                        <div className=''>
-                                            <img src={product.main_image_url} alt={product.name} className='object-cover w-full h-48' />
-                                        </div>
-                                    }
-                                    price={`$${product.price}`}
-                                />
-                            </Link>
-                        ))}
+                    {filteredProducts.map((product) => (
+                        <Link to={`/detail/${product.id}`} key={product.id}>
+                            <CardProducts
+                            name={product.name}
+                            image={
+                                <div>
+                                <img src={product.main_image_url} alt={product.name} className='object-cover w-full h-48' />
+                                </div>
+                            }
+                            price={`${product.price} VND`}
+                            />
+                        </Link>
+                    ))}
                     </div>
                 </div>
             </section>
