@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -24,22 +25,24 @@ export default function Register() {
     setMessage('');
 
     try {
-      const res = await fetch(`${BASE_URL}/api/users/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+      const res = await axios.post(`${BASE_URL}/api/users/register`, form, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
-
-      const data = await res.json();
-
-      if (res.ok) {
+    
+      if (res.status === 200 || res.status === 201) {
         setMessage('Đăng ký thành công! Bạn có thể đăng nhập.');
         setForm({ email: '', name: '', password: '' });
       } else {
-        setMessage(data.message || 'Lỗi đăng ký');
+        setMessage(res.data.message || 'Lỗi đăng ký');
       }
     } catch (err) {
-      setMessage('Lỗi kết nối server');
+      if (err.response && err.response.data && err.response.data.message) {
+        setMessage(err.response.data.message);
+      } else {
+        setMessage('Lỗi kết nối server');
+      }
       console.error(err);
     }
   };
