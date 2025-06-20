@@ -60,7 +60,7 @@ const Index = () => {
 
         {/* Benefits */}
         <section className="bg-[#ECF5ED] py-10 px-4">
-          <div className="mx-52 grid grid-cols-1 min-[320px]:mx-0 min-[320px]:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="md:mx-52 grid grid-cols-1 min-[320px]:mx-0 min-[320px]:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <CardBenefits
               title="Natural Ingredients"
               icon={<ShieldCheck className="text-green-600" size={28} />}
