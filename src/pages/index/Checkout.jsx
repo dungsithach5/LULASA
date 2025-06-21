@@ -8,7 +8,7 @@ import Layout from '../../layout/Layout';
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Checkout = () => {
-  const { cartItems, clearCart, totalPrice, updateQuantity, removeFromCart, totalQuantity } = useCart();
+  const { cartItems, totalPrice, updateQuantity, removeFromCart, totalQuantity } = useCart();
   
   const [form, setForm] = useState({
     customer_name: '',
@@ -62,7 +62,7 @@ const Checkout = () => {
           month: 'short', 
           day: 'numeric' 
         })} | Total: ${totalPrice.toLocaleString()} VND | ${emailStatus}`);
-        clearCart();
+        // clearCart();
         
       } catch (err) {
         if (err.response) {
