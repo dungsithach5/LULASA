@@ -93,7 +93,7 @@ function Detail() {
 
               <div className="flex items-center">
                 <span className="text-xl sm:text-2xl font-medium text-herb-700">
-                  {product.price} VND
+                  {parseInt(product.price).toLocaleString()} VND
                 </span>
               </div>
 
@@ -153,7 +153,7 @@ function Detail() {
                     sx={{backgroundColor:'#2D6E53'}}
                     onClick={() => addToCart(product, quantity)}
                     >
-                    Add to Cart - {product.price * quantity} VND
+                    Add to Cart - {parseInt(product.price * quantity).toLocaleString()} VND
                   </Button>
                   <Button
                       variant="outlined"

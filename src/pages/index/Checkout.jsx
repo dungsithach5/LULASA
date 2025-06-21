@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaUser, FaPhone, FaEnvelope, FaMapMarkerAlt, FaShoppingCart, FaCreditCard, FaCheckCircle } from 'react-icons/fa';
+import { X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '/src/context/CartContext';
@@ -275,7 +276,7 @@ const Checkout = () => {
                             onClick={() => removeFromCart(item.id)}
                             className="text-red-500 hover:text-red-700 text-xs mt-1"
                           >
-                            Remove
+                            <X className="w-5 h-5 cursor-pointer" />
                           </button>
                         </div>
                       </div>

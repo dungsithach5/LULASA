@@ -160,7 +160,7 @@ const Shop = () => {
                                 <img src={product.main_image_url} alt={product.name} className='object-cover w-full h-48' />
                                 </div>
                             }
-                            price={`${product.price} VND`}
+                            price={`${parseInt(product.price).toLocaleString()} VND`}
                             />
                         </Link>
                     ))}

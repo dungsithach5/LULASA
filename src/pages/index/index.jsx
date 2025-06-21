@@ -113,7 +113,7 @@ const Index = () => {
                           />
                         </div>
                       }
-                      price={`${product.price} VND`}
+                      price={`${parseInt(product.price).toLocaleString()} VND`}
                     />
                   </Link>
                 ))}

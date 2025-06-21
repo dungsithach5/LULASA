@@ -179,7 +179,7 @@ function Navbar() {
                                                         onClick={() => removeFromCart(item.id)}
                                                         className="text-red-500 hover:text-red-700 text-sm"
                                                     >
-                                                        Remove
+                                                        <X className="w-5 h-5 cursor-pointer" />
                                                     </button>
                                                 </div>
                                             ))
