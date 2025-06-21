@@ -13,7 +13,7 @@ const Contact = () => {
       </div>
 
       <section className="py-20">
-        <div className="container-custom mx-52">
+        <div className="container-custom md:mx-52 min-[320px]:px-6">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div>

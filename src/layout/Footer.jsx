@@ -20,7 +20,7 @@ const Footer = () => {
       </div>
 
       {/* Main Content Section */}
-      <div className="grid grid-cols-1 max-md:text-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10 text-white px-4 md:px-12 xl:px-20">
+      <div className="md:mx-52 mt-24 grid grid-cols-1 max-md:text-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-10 text-white px-4 md:px-12">
         {/* Community Section */}
         <div>
           <h3 className="text-[15px] font-semibold">JOIN OUR COMMUNITY</h3>
