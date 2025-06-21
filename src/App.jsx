@@ -6,6 +6,7 @@ import Contact from './pages/index/Contact';
 import Detail from './pages/index/Detail';
 import Login from './pages/auth/login';
 import Register from './pages/auth/register';
+import Checkout from './pages/index/Checkout';
 // import Dashboard from './pages/dashboard/Dashboard';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route path="/detail/:id" element={<Detail />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/checkout" element={<Checkout />} />
       {/* <Route path="/dashboard" element={<Dashboard />} /> */}
     </Routes>
   );

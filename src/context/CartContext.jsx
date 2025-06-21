@@ -20,10 +20,42 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const removeFromCart = (productId) => {
+    setCartItems((prevItems) => prevItems.filter(item => item.id !== productId));
+  };
+
+  const updateQuantity = (productId, quantity) => {
+    if (quantity <= 0) {
+      removeFromCart(productId);
+      return;
+    }
+    
+    setCartItems((prevItems) =>
+      prevItems.map(item =>
+        item.id === productId
+          ? { ...item, quantity }
+          : item
+      )
+    );
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, totalQuantity }}>
+    <CartContext.Provider value={{ 
+      cartItems, 
+      addToCart, 
+      removeFromCart, 
+      updateQuantity, 
+      clearCart, 
+      totalQuantity,
+      totalPrice 
+    }}>
       {children}
     </CartContext.Provider>
   );

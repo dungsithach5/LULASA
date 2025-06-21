@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ShoppingCart, Search, CircleUserRound, Menu, X } from "lucide-react";
 import Drawer from '../components/Drawer'
 import { fetchProducts } from '../service/api/productApi.js';
@@ -7,7 +7,6 @@ import { UserContext } from '/src/context/UserContext';
 import { CartContext } from '/src/context/CartContext';
 import { useCart } from '/src/context/CartContext';
 import Cookies from 'js-cookie';
-// import { useNavigate } from 'react-router-dom';
 
 
 function Navbar() {
@@ -17,9 +16,9 @@ function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { userName } = useContext(UserContext);
     const { setUserName } = useContext(UserContext);
-    const { cartItems } = useContext(CartContext);
-    const { totalQuantity } = useCart();
-    // const navigate = useNavigate();
+    const { cartItems, removeFromCart } = useContext(CartContext);
+    const { totalQuantity, totalPrice } = useCart();
+    const navigate = useNavigate();
 
     const handleSearch = (e) => {
         const query = e.target.value.toLowerCase();
@@ -35,7 +34,7 @@ function Navbar() {
         Cookies.remove('token');
         Cookies.remove('userName');
         setUserName(null);
-        // navigate('/');
+        navigate('/');
     };
 
     useEffect(() => {
@@ -173,18 +172,27 @@ function Navbar() {
                                                         <div className='space-y-1'>
                                                             <h3 className="text-md font-medium text-gray-800">{item.name}</h3>
                                                             <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
-                                                            <p className="text-md font-medium text-gray-700">${(item.price * item.quantity).toFixed(2)}</p>
+                                                            <p className="text-md font-medium text-gray-700">{(item.price * item.quantity).toLocaleString()} VND</p>
                                                         </div>
                                                     </div>
+                                                    <button 
+                                                        onClick={() => removeFromCart(item.id)}
+                                                        className="text-red-500 hover:text-red-700 text-sm"
+                                                    >
+                                                        Remove
+                                                    </button>
                                                 </div>
                                             ))
                                         )}
                                         {cartItems.length > 0 && (
                                             <div className="flex justify-between items-center mt-4">
                                                 <p className="text-lg font-medium text-gray-900">
-                                                    Total: {cartItems.reduce((total, item) => total + item.price * item.quantity, 0)} VND
+                                                    Total: {totalPrice.toLocaleString()} VND
                                                 </p>
-                                                <button className="px-4 py-2 bg-[#2D6E53] text-white rounded hover:bg-green-700 transition cursor-pointer">
+                                                <button 
+                                                    onClick={() => navigate('/checkout')}
+                                                    className="px-4 py-2 bg-[#2D6E53] text-white rounded hover:bg-green-700 transition cursor-pointer"
+                                                >
                                                     Checkout
                                                 </button>
                                             </div>
