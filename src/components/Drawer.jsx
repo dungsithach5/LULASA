@@ -29,7 +29,7 @@ export default function Drawer({ icon, content, anchor = "right" }) {
         onOpen={toggleDrawer(true)}
       >
         <Box
-          sx={{ width: anchor === "top" ? "auto" : 400 }}
+          sx={{ width: anchor === "top" ? "auto" : 350 }}
           role="presentation"
         >
           {content}
