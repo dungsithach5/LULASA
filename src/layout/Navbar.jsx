@@ -198,16 +198,35 @@ function Navbar() {
 
                 {/* Mobile Navigation Menu */}
                 {isMobileMenuOpen && (
-                    <div className='md:hidden'>
-                        <ul className='px-2 pt-2 pb-3 space-y-1'>
-                            <Link to="/" className='block px-3 py-2 rounded-md hover:bg-gray-100'><li>HOME</li></Link>
-                            <Link to="/shop" className='block px-3 py-2 rounded-md hover:bg-gray-100'><li>SHOP</li></Link>
-                            <Link to="" className='block px-3 py-2 rounded-md hover:bg-gray-100'><li>BLOG</li></Link>
-                            <Link to="/contact" className='block px-3 py-2 rounded-md hover:bg-gray-100'><li>CONTACT</li></Link>
-                            <Link to="" className='block px-3 py-2 rounded-md hover:bg-gray-100'><li>ABOUT</li></Link>
-                        </ul>
-                    </div>
-                )}
+                <div className='md:hidden'>
+                    <ul className='px-2 pt-2 pb-3 space-y-1'>
+                        <Link to="/" className='block px-3 py-2 rounded-md hover:bg-gray-100'><li>HOME</li></Link>
+                        <Link to="/shop" className='block px-3 py-2 rounded-md hover:bg-gray-100'><li>SHOP</li></Link>
+                        <Link to="" className='block px-3 py-2 rounded-md hover:bg-gray-100'><li>BLOG</li></Link>
+                        <Link to="/contact" className='block px-3 py-2 rounded-md hover:bg-gray-100'><li>CONTACT</li></Link>
+                        <Link to="" className='block px-3 py-2 rounded-md hover:bg-gray-100'><li>ABOUT</li></Link>
+
+                        {/* Thêm phần tài khoản / logout */}
+                        {userName ? (
+                            <>
+                                <li className='px-3 py-2 text-gray-700'>Hello, <strong>{userName}</strong></li>
+                                <li>
+                                    <button
+                                        onClick={handleLogout}
+                                        className='w-full text-left px-3 py-2 text-red-600 hover:bg-gray-100 rounded-md'
+                                    >
+                                        Logout
+                                    </button>
+                                </li>
+                            </>
+                        ) : (
+                            <Link to="/login" className='block px-3 py-2 rounded-md hover:bg-gray-100 text-blue-600'>
+                                <li>Login</li>
+                            </Link>
+                        )}
+                    </ul>
+                </div>
+            )}
             </div>
         </div>
     );
