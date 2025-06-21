@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FaUser, FaPhone, FaEnvelope, FaMapMarkerAlt, FaShoppingCart, FaCreditCard, FaCheckCircle } from 'react-icons/fa';
 import { X } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '/src/context/CartContext';
 import Layout from '../../layout/Layout';
@@ -9,24 +8,20 @@ import Layout from '../../layout/Layout';
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Checkout = () => {
-  const { cartItems, clearCart, totalPrice, updateQuantity, removeFromCart } = useCart();
-  const navigate = useNavigate();
+  const { cartItems, clearCart, totalPrice, updateQuantity, removeFromCart, totalQuantity } = useCart();
   
   const [form, setForm] = useState({
     customer_name: '',
     customer_phone: '',
     customer_email: '',
-    customer_address: ''
+    customer_address: '',
+    total_amt: 0,
+    order_date: new Date().toISOString().split('T')[0]
   });
 
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  React.useEffect(() => {
-    if (!cartItems || cartItems.length === 0) {
-      navigate('/');
-    }
-  }, [cartItems, navigate]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -39,8 +34,16 @@ const Checkout = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    const orderData = {
+    
+    // Update form with current total amount
+    const updatedForm = {
       ...form,
+      total_amt: totalPrice,
+      order_date: new Date().toISOString().split('T')[0]
+    };
+    
+    const orderData = {
+      ...updatedForm,
       items: cartItems
     };
 
@@ -53,9 +56,13 @@ const Checkout = () => {
       
         const data = res.data;
       
-        setMessage('🎉 Successful payment! product code: ' + data.order_id);
+        const emailStatus = data.emailSent ? '📧 Email sent successfully!' : '📧 Email delivery pending';
+        setMessage(`🎉 Successful payment! Order ID: ${data.id} | Date: ${new Date().toLocaleDateString('en-US', { 
+          year: 'numeric', 
+          month: 'short', 
+          day: 'numeric' 
+        })} | Total: ${totalPrice.toLocaleString()} VND | ${emailStatus}`);
         clearCart();
-
         
       } catch (err) {
         if (err.response) {
@@ -129,6 +136,32 @@ const Checkout = () => {
                     <FaUser className="w-6 h-6 text-green-600" />
                   </div>
                   <h2 className="text-2xl font-bold text-gray-900">Information Customer</h2>
+                </div>
+
+                {/* Order Summary */}
+                <div className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-xl border border-blue-200 mb-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                    <FaShoppingCart className="w-5 h-5 mr-2 text-blue-600" />
+                    Order Summary
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="text-center">
+                      <p className="text-sm text-gray-600">Order Date</p>
+                      <p className="font-semibold text-gray-900">{new Date().toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: 'numeric' 
+                      })}</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-sm text-gray-600">Total Items</p>
+                      <p className="font-semibold text-gray-900">{totalQuantity}</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-sm text-gray-600">Total Amount</p>
+                      <p className="font-bold text-green-600 text-lg">{totalPrice.toLocaleString()} VND</p>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
@@ -210,6 +243,13 @@ const Checkout = () => {
                     </div>
                   )}
                 </button>
+
+                <div className="text-center text-sm text-gray-600 mt-4">
+                  <div className="flex items-center justify-center">
+                    <FaEnvelope className="w-4 h-4 mr-2 text-green-600" />
+                    <span>You'll receive an order confirmation email</span>
+                  </div>
+                </div>
 
                 {message && (
                   <div className={`p-4 rounded-xl text-center ${
