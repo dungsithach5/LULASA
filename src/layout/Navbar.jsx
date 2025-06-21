@@ -56,7 +56,7 @@ function Navbar() {
         if (nameFromCookie) {
           setUserName(nameFromCookie);
         }
-      }, []);
+    }, []);
 
     return (
         <div className='bg-white fixed top-0 left-0 right-0 z-50 shadow-xs'>
@@ -182,7 +182,7 @@ function Navbar() {
                                         {cartItems.length > 0 && (
                                             <div className="flex justify-between items-center mt-4">
                                                 <p className="text-lg font-medium text-gray-900">
-                                                    Total: ${cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}
+                                                    Total: {cartItems.reduce((total, item) => total + item.price * item.quantity, 0)} VND
                                                 </p>
                                                 <button className="px-4 py-2 bg-[#2D6E53] text-white rounded hover:bg-green-700 transition cursor-pointer">
                                                     Checkout

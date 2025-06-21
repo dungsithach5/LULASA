@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       RelatedProduct.belongsTo(models.Product, {
         foreignKey: 'product_id'
       });
+      RelatedProduct.belongsTo(models.Product, {
+        foreignKey: 'related_product_id',
+        as: 'related'
+      });
     }
   }
   RelatedProduct.init({

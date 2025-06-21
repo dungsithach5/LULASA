@@ -1,4 +1,4 @@
-const { Product }= require('../models');
+const { Product, RelatedProduct }= require('../models');
 exports.getAllProducts = async (req, res) => {
     try {
         const products = await Product.findAll();
@@ -10,12 +10,28 @@ exports.getAllProducts = async (req, res) => {
 
 exports.getProductById = async (req, res) => {
     try {
-        const product = await Product.findByPk(req.params.id);
+        const product = await Product.findByPk(req.params.id, {
+            include: [
+                {
+                    model: RelatedProduct,
+                    include: [
+                        {
+                            model: Product,
+                            as: 'related',
+                            attributes: ['id', 'name', 'price', 'main_image_url']
+                        }
+                    ]
+                }
+            ]
+        });
+
         if (!product) {
             return res.status(404).json({ message: 'Product not found' });
         }
+
         res.status(200).json(product);
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: 'Error fetching product', error });
     }
 };
