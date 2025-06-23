@@ -100,6 +100,7 @@ const Footer = () => {
 
       {/* Footer Branding */}
       <div className="text-center text-white text-opacity-80 text-[12px]">
+        <img src="/img/logo1.png" alt="LULASA Logo" className="mx-auto h-44 w-44" />
         &copy; {currentYear} LULASA. All rights reserved.
       </div>
     </div>
